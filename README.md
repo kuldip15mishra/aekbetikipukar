@@ -1,2 +1,0 @@
-# aekbetikipukar
-NGO website

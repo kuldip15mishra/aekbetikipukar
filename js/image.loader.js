@@ -1,50 +1,42 @@
-(function() { // wrap code in IIFE to keep it from global scope
-    let links = document.querySelectorAll('a'); // grab all <a> tags that trigger the image gallery
-    let imageContainer = document.querySelector('.image-container'); // grab the div that will contain the images
-    let imagesCollection = document.querySelectorAll('.image-container img');
-  
-  function displayImage(imgs, album) { // function to check the data-album attr and check against the button that was clicked
-    imgs.forEach((image) => {
-      if(image.dataset.album == album) {
-        image.classList.remove('hide');
+$(document).ready(function(){
+  // filter
+  $('nav a').on('click', function(event){
+      event.preventDefault();
+      // current class
+      $('nav li.current').removeClass('current');
+      $(this).parent().addClass('current');
+
+      // set new heading
+      $('h1.heading').text($(this).text());
+      
+      // filter link text
+      var category = $(this).text().toLowerCase().replace(' ', '-');
+      
+      // remove hidden class if "all" is selected
+      if(category == 'all-projects'){
+          $('ul#gallery li:hidden').fadeIn('slow').removeClass('hidden');
       } else {
-        image.classList.add('hide');
+          $('ul#gallery li').each(function(){
+             if(!$(this).hasClass(category)){
+                 $(this).hide().addClass('hidden');
+             } else {
+                 $(this).fadeIn('slow').removeClass('hidden');
+             }
+          });
       }
-    });
-  }
-  
-    
-    links.forEach((link) => { // loop through <a> tags and create click event on each 
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-
-            switch (link.textContent) { // check name of link clicked 
-                case "album 1": // link 1 text
-                
-                    displayImage(imagesCollection, 'album 1'); //display images from album 1
-
-                    break;
-                case "album 2": // link 2 text
-                
-                    displayImage(imagesCollection, 'album 2'); //display images from album 2
-
-                    break;
-                case "album 3": // link 3 text
-                
-                    displayImage(imagesCollection, 'album 3'); //display images from album 3
-
-                    break;
-                    
-                case "all": // // link 4 text - display all images at once
-                
-                        imagesCollection.forEach((image) => {
-                          image.classList.remove('hide');
-                   });
-
-                    break;
-            }
-
-        });
-    });
-    
-    })();
+      return false;        
+  });
+  // lightbox
+  $('ul#gallery a').on('click', function(event){
+      event.preventDefault();
+      var link = $(this).find('img').attr('src');
+      $('.gallery img').attr('src', '');
+      $('.gallery img').attr('src', link);
+      $('.gallery').fadeIn('slow');
+  });
+  // close lightbox
+  $('.gallery').on('click', function(event){
+      event.preventDefault();
+      $('.gallery').fadeOut('slow');
+  });
+});

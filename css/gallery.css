@@ -1,110 +1,142 @@
-/*
+* {
+    margin: 0;
+    padding: 0;
+}
 
-All grid code is placed in a 'supports' rule (feature query) at the bottom of the CSS (Line 77). 
-        
-The 'supports' rule will only run if your browser supports CSS grid.
-
-Flexbox is used as a fallback so that browsers which don't support grid will still recieve an identical layout.
-
-*/
-
-
-
+body {
+    color: #333;
+    font-size: 13px;
+    background: #f4f4f4;
+    font-family: sans-serif;
+    overflow:auto;
+}
 
 .container {
-	max-width: 100rem;
-	margin: 0 auto;
-	padding: 0 2rem 2rem;
+    width: 90%;
+    max-width: 960px;
+    margin: 30px auto;
+    position: relative;
+    text-align: center;
 }
 
-.heading {
-	font-family: "Montserrat", Arial, sans-serif;
-	font-size: 4rem;
-	font-weight: 500;
-	line-height: 1.5;
-	text-align: center;
-	padding: 3.5rem 0;
-	color: #1a1a1a;   
+h1 {
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    color: #F39CC3;
 }
 
-.heading span {
-	display: block;
+nav {
+    display: block;
+    width: 100%;
+}
+
+ul {
+   list-style: none; 
+   margin-bottom: 20px;
+}
+
+nav > ul > li {
+    display: inline-block;
+}
+nav > ul > li > a {
+    text-transform: uppercase;
+    padding: 4px 10px;
+    margin-right: 2px;
+    margin-left: 2px;
+    text-decoration: none;
+    color: #27A4DD;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 25px;
+    border: 1px solid #27A4DD;
+    -webkit-transition: all 300ms ease-in-out;
+    -moz-transition: all 300ms ease-in-out;
+    transition: all 300ms ease-in-out;
+}
+
+.hidden {
+    display: none;
+}
+
+nav > ul > li > a:hover, .current a {
+    color: #fff;
+    background-color: #27A4DD;
+}
+
+#projects > ul > li {
+    display: inline-block;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    width: 23%;
+    height: auto;
+    cursor: pointer;
+    border-radius: 5px;
+    /* Padding stays within the width */
+    box-sizing: border-box;
+    position: relative;
+    opacity: 0.7;
+    -webkit-transition: all 300ms ease-in-out;
+    -moz-transition: all 300ms ease-in-out;
+    transition: all 300ms ease-in-out;
+}
+
+#projects > ul > li:hover {
+    opacity: 1;
+}
+
+img {
+    max-width: 100%;
+    border-radius: 5px;
 }
 
 .gallery {
-	display: flex;
-	flex-wrap: wrap;
-	/* Compensate for excess margin on outer gallery flex items */
-	margin: -1rem -1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    padding: 40px 10px;
+    display: none;
+    box-sizing: border-box;
 }
 
-.gallery-item {
-	/* Minimum width of 24rem and grow to fit available space */
-	flex: 1 0 24rem;
-	/* Margin value should be half of grid-gap value as margins on flex items don't collapse */
-	margin: 1rem;
-	box-shadow: 0.3rem 0.4rem 0.4rem rgba(0, 0, 0, 0.4);
-	overflow: hidden;
+.gallery > img {
+    max-height: 100%;
+    width: auto;
 }
 
-.gallery-item img{
-	width: 400px;
-	height: 400px;
-}
-.gallery-image {
-	display: block;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	transition: transform 400ms ease-out;
+.close i {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    height: 30px;
+    width: 30px;
 }
 
-.gallery-image:hover {
-	transform: scale(1.15);
-}
-a {
-    display: inline-block;
-    padding: 10px;
-    border-radius: 4px;
-    color: #fff;
-    text-decoration: none;
-    width: 100px;
-    text-align: center;
-    margin-bottom: 50px;
+.bar {
+    display: block;
+    position: absolute;
+    top: 13px;
+    float: left;
+    width: 30px;
+    border-bottom: 4px solid #fff;
+    transform: rotate(45deg);
 }
 
-a:nth-of-type(1) {
-    background-color: cornflowerblue;
+.bar:first-child {
+    transform: rotate(-45deg);
 }
 
-a:nth-of-type(2) {
-    background-color: hotpink;
+@media (max-width: 768px){
+    #projects > ul > li {
+        width: 48%;
+    }
 }
 
-a:nth-of-type(3) {
-    background-color: lightcoral;
-}
-
-a:nth-of-type(4) {
-    background-color: rebeccapurple;
-}
-/*
-
-The following rule will only run if your browser supports CSS grid.
-
-Remove or comment-out the code block below to see how the browser will fall-back to flexbox styling. 
-
-*/
-
-@supports (display: grid) {
-	.gallery {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-		grid-gap: 2rem;
-	}
-
-	.gallery,
-	.gallery-item {
-		margin: 0;
-	}
+@media (max-width: 568px) {
+    #projects > ul > li {
+        width: 100%;
+    }
 }

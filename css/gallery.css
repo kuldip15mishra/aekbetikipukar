@@ -44,23 +44,23 @@ h1 {
     margin-right: 2px;
     margin-left: 2px;
     text-decoration: none;
-    color: #27A4DD;
+    color: black;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 25px;
-    border: 1px solid #27A4DD;
+    /* border: 1px solid #27A4DD;
     -webkit-transition: all 300ms ease-in-out;
     -moz-transition: all 300ms ease-in-out;
-    transition: all 300ms ease-in-out;
+    transition: all 300ms ease-in-out; */
 }
 
 .hidden {
     display: none;
 }
 
-.content nav > ul > li > a:hover, .current a {
-    color: #fff;
-    background-color: #27A4DD;
+.content nav > ul > li > a:hover, .content .current a {
+    color: #fff !important;
+    background-color: black;
 }
 
 #projects > ul > li {
@@ -68,8 +68,8 @@ h1 {
     float: left;
     margin-right: 10px;
     margin-bottom: 5px;
-    width: 23%;
-    height: auto;
+    /* width: 23%;
+    height: auto; */
     cursor: pointer;
     border-radius: 5px;
     /* Padding stays within the width */
@@ -86,7 +86,7 @@ h1 {
 }
 
 img {
-    max-width: 100%;
+    
     border-radius: 5px;
 }
 
@@ -103,8 +103,8 @@ img {
 }
 
 .gallery > img {
-    max-height: 100%;
-    width: auto;
+    width: 400px;
+    height: 400px;
 }
 
 .close i {

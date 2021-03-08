@@ -68,8 +68,8 @@ h1 {
     float: left;
     margin-right: 10px;
     margin-bottom: 5px;
-    /* width: 23%;
-    height: auto; */
+    width: 200px;
+    height: 200px;
     cursor: pointer;
     border-radius: 5px;
     /* Padding stays within the width */
@@ -86,7 +86,7 @@ h1 {
 }
 
 img {
-    
+    max-width: 100%;
     border-radius: 5px;
 }
 
@@ -102,9 +102,10 @@ img {
     box-sizing: border-box;
 }
 
-.gallery > img {
-    width: 400px;
-    height: 400px;
+#gallery  img {
+    max-height: 100%;
+    width: 200px  !important;
+    height: 200px !important;
 }
 
 .close i {

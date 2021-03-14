@@ -64,7 +64,9 @@ img {
 	max-width: 100%;
 }
 
-
+.align_center{
+    text-align: center !important;
+}
 
 /****Heads****/
 

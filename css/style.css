@@ -59,6 +59,9 @@ input {
 	outline: none !important;
 }
 
+.para_lineht{
+    line-height: 3;
+}
 
 img {
 	max-width: 100%;
